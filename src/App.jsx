@@ -52,6 +52,10 @@ export default function App() {
       if (pickedTwice.length > 0) {
         message.current = "You picked twice"; // change message
         setShowScoreBoard(true); // show score board
+      } else if (picked.length == 12) {
+        setCurrent((current) => (current += 1)); // increment current score
+        message.current = "Winner"; // announce Winner
+        setShowScoreBoard(true); // show score board
       } else {
         setCurrent((current) => (current += 1)); // increment current score
         deck.current = shuffledDeck(handlePick); // shuffle deck
