@@ -23,7 +23,7 @@ export default function ScoreBoard(props) {
             <div>{props.current}</div>
           </div>
           <div className="score">
-            <div>Highest Score</div>
+            <div>High Score</div>
             <div>{props.highest}</div>
           </div>
         </div>
