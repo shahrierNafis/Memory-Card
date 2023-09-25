@@ -14,7 +14,7 @@ import "../style/ScoreBoard.css";
 export default function ScoreBoard(props) {
   return props.trigger ? (
     <div className="scoreBoard">
-      <h1 className="message">{props.message}</h1>
+      <div className="message">{props.message}</div>
       {/* Only show scores when not zero */}
       {props.current !== 0 && (
         <div className="scores">
@@ -29,7 +29,7 @@ export default function ScoreBoard(props) {
         </div>
       )}
       <button className="start-btn" onClick={props.reset}>
-        <h1>Start</h1>
+        <div>Start</div>
       </button>
     </div>
   ) : (
