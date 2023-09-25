@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useRef, useEffect } from "react";
+import data from "./data.json";
+import Card from "./components/Card";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const current = useRef(0);
+  const highest = useRef(0);
+  const [picked, setPicked] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  function handlePick(index) {
+    setPicked((picked) => [...picked, index]);
+  }
+
+  useEffect(() => {
+    if (picked.length === 0) {
+      console.log(picked);
+      alert("don't pick twice");
+    } else {
+      // check if the used picked twice
+      const pickedTwice = picked.filter(
+        (item, index) => picked.indexOf(item) !== index
+      );
+      if (pickedTwice.length > 0) {
+        current.current = 0;
+        setPicked([]);
+      } else {
+        current.current += 1;
+        if (current.current > highest.current) {
+          highest.current = current.current;
+        }
+      }
+    }
+  }, [picked.length]);
+  /**
+   * Returns an array of cards in random order.
+   * @returns {Array} The array of shuffled cards.
+   */
+  function shuffledDeck() {
+    // Track taken cards
+    const taken = [];
+
+    const deck = [];
+
+    // While cards are left in data
+    while (taken.length !== data.length) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+
+      // If card is not taken
+      if (!taken.includes(randomIndex)) {
+        // Take the card
+        taken.push(randomIndex);
+        deck.push(
+          <Card
+            key={randomIndex}
+            index={randomIndex}
+            data={data[randomIndex]}
+            onClick={handlePick}
+          />
+        );
+      }
+    }
+    // return the deck
+    return deck;
+  }
+
+  return <>{shuffledDeck()}</>;
 }
 
-export default App
+export default App;
