@@ -3,6 +3,7 @@ import data from "./data.json";
 import Card from "./components/Card";
 import ScoreBoard from "./components/ScoreBoard";
 import "./App.css";
+import { wrapGrid } from "animate-css-grid";
 
 /**
  * Renders the main App component.
@@ -59,7 +60,10 @@ export default function App() {
       highest.current = current;
     }
   }, [current]);
-
+  // Add shuffle animation to deck on every render
+  useEffect(() => {
+    wrapGrid(document.getElementById("deck"));
+  }, []);
   return (
     <>
       <ScoreBoard
