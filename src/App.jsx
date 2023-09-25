@@ -18,6 +18,11 @@ export default function App() {
   const [showScoreBoard, setShowScoreBoard] = useState(true); // flag to show/hide score board
   let message = useRef("Don't pick twice"); // message to display
 
+  if (localStorage.getItem("highest")) {
+    highest.current = +localStorage.getItem("highest");
+  } else {
+    localStorage.setItem(highest, 0);
+  }
   /**
    * Handles the pick of a card.
    *
@@ -58,6 +63,7 @@ export default function App() {
     // update highest if current score is higher
     if (current > highest.current) {
       highest.current = current;
+      localStorage.setItem("highest", current);
     }
   }, [current]);
   // Add shuffle animation to deck on every render
