@@ -1,12 +1,25 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
 #root {
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+}
+
+#deck {
   display: grid;
   width: 100vw;
   grid-auto-flow: column;
   grid-auto-rows: 18.73125vw;
+
 }
 
 .card {
-  border: 1px white solid;
+  border: 2px white solid;
   /* width: 33.3vw;
   height: 18.5625vw; */
   overflow: hidden;
@@ -14,8 +27,4 @@
 
 .card:nth-child(3n+1) {
   grid-column: 1;
-}
-
-img {
-  object-fit: scale-down;
 }

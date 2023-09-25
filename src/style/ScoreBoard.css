@@ -1,0 +1,39 @@
+.scoreBoard {
+    position: fixed;
+    height: 90vh;
+    width: 75vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #646cff;
+    border-radius: 8px;
+    background-color: #242424;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.start-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.scores {
+    display: grid;
+    justify-content: space-between;
+    padding: 5vw;
+    grid-template-columns: 1fr 1fr;
+}
+
+.score {
+    display: flex;
+    font-size: 5rem;
+    flex-flow: column;
+    border: 1px solid #646cff;
+    border-radius: 8px;
+}
+
+.score div {
+    margin: 0 auto;
+}
