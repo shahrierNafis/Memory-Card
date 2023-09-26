@@ -16,7 +16,7 @@ export default function ScoreBoard(props) {
     <div className="scoreBoard">
       <div className="message">{props.message}</div>
       {/* Only show scores when not zero */}
-      {props.current !== 0 && (
+      {props.current !== 0 ? (
         <div className="scores">
           <div className="score">
             <div>Score</div>
@@ -26,6 +26,12 @@ export default function ScoreBoard(props) {
             <div>High Score</div>
             <div>{props.highest}</div>
           </div>
+        </div>
+      ) : (
+        <div className="how-to-play">
+          This is a simple memory game built with React. The objective of the
+          game is to pick cards without picking the same card twice. The game
+          keeps track of the current score and the highest score.
         </div>
       )}
       <button className="start-btn" onClick={props.reset}>

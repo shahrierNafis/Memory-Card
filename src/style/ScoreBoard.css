@@ -19,7 +19,11 @@
     text-align: center;
 }
 
-
+.how-to-play {
+    font-size: 3vw;
+    text-align: center;
+    margin-top: 16px;
+}
 
 .scores {
     display: grid;
@@ -47,4 +51,21 @@
 
 .start-btn div {
     font-size: 5vw;
+}
+
+@media (prefers-color-scheme: light) {
+    .scoreBoard {
+        color: black;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        color: #747bff;
+    }
+
+    .scoreBoard button {
+        background-color: #ffffff;
+        border-color: #646cff;
+    }
+
 }
