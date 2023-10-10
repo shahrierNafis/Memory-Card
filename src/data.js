@@ -13,9 +13,8 @@ export default [
     name: "Darth Vader",
   },
   {
-    image: new URL("/src/assets/images/darthVaderHallway.gif", import.meta.url)
-      .href,
-    name: "darthVaderHallway",
+    image: new URL("/src/assets/images/adonis.gif", import.meta.url).href,
+    name: "adonis",
   },
   {
     image: new URL("/src/assets/images/saitama.gif", import.meta.url).href,
