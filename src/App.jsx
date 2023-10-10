@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import data from "./data.json";
+import data from "./data.js";
 import Card from "./components/Card";
 import ScoreBoard from "./components/ScoreBoard";
 import "./App.css";
