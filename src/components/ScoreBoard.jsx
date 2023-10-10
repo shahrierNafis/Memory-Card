@@ -31,7 +31,7 @@ export default function ScoreBoard(props) {
         <div className="how-to-play">
           This is a simple memory game built with React. The objective of the
           game is to pick cards without picking the same card twice. The game
-          keeps track of the current score and the highest score.
+          keeps track of the current score and the high score.
         </div>
       )}
       <button className="start-btn" onClick={props.reset}>
