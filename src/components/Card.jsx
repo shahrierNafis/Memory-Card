@@ -1,5 +1,7 @@
 import propTypes from "prop-types";
 import "../style/Card.css";
+import { useRef } from "react";
+import { useEffect } from "react";
 /**
  * Render a card component.
  *
@@ -12,9 +14,25 @@ import "../style/Card.css";
  * @returns {JSX.Element} - The rendered card component.
  */
 export default function Card(props) {
+  const img = useRef(null);
+  const card = useRef(null);
+
+  // Show image when loaded
+  useEffect(() => {
+    function loaded() {
+      card.current.classList.add("loaded");
+    }
+    if (img.current.complete) {
+      loaded();
+    } else {
+      img.current.addEventListener("load", loaded);
+    }
+    return () => {};
+  }, []);
+
   return (
-    <div className="card" onClick={() => props.onClick(props.index)}>
-      <img src={props.data.image} alt={props.data.name} />
+    <div className="card" ref={card} onClick={() => props.onClick(props.index)}>
+      <img ref={img} src={props.data.image} alt={props.data.name} />
     </div>
   );
 }
