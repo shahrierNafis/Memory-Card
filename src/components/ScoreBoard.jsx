@@ -24,7 +24,7 @@ export default function ScoreBoard(props) {
           </div>
           <div className="score">
             <div>High Score</div>
-            <div>{props.highest}</div>
+            <div>{props.highScore}</div>
           </div>
         </div>
       ) : (
@@ -47,5 +47,5 @@ ScoreBoard.propTypes = {
   reset: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   current: PropTypes.number,
-  highest: PropTypes.number,
+  highScore: PropTypes.number,
 };

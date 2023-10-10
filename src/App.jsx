@@ -12,16 +12,16 @@ import { wrapGrid } from "animate-css-grid";
  */
 export default function App() {
   const [current, setCurrent] = useState(0); // current score
-  const highest = useRef(0); // highest score
+  const highScore = useRef(0); // highScore
   const [picked, setPicked] = useState([]); // track picked cards
   const deck = useRef(shuffledDeck(handlePick)); // shuffled deck of cards
   const [showScoreBoard, setShowScoreBoard] = useState(true); // flag to show/hide score board
   let message = useRef("Don't pick twice"); // message to display
 
-  if (localStorage.getItem("highest")) {
-    highest.current = +localStorage.getItem("highest");
+  if (localStorage.getItem("highScore")) {
+    highScore.current = +localStorage.getItem("highScore");
   } else {
-    localStorage.setItem(highest, 0);
+    localStorage.setItem(highScore, 0);
   }
   /**
    * Handles the pick of a card.
@@ -64,10 +64,10 @@ export default function App() {
   }, [picked]);
 
   useEffect(() => {
-    // update highest if current score is higher
-    if (current > highest.current) {
-      highest.current = current;
-      localStorage.setItem("highest", current);
+    // update highScore if current score is higher
+    if (current > highScore.current) {
+      highScore.current = current;
+      localStorage.setItem("highScore", current);
     }
   }, [current]);
   // Add shuffle animation to deck on every render
@@ -80,7 +80,7 @@ export default function App() {
         trigger={showScoreBoard}
         setTrigger={setShowScoreBoard}
         current={current}
-        highest={highest.current}
+        highScore={highScore.current}
         message={message.current}
         reset={reset}
       />
